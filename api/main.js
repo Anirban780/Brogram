@@ -3,7 +3,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 
 import { dbString, apiPort } from "./config.js";
+
 import authRouter from "./routes/auth.js";
+import postRouter from "./routes/posts.js";
 
 // express setup 
 const app = express();
@@ -12,8 +14,18 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// routes
+// non protected routes
 app.use(authRouter);
+
+app.use(function(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(403).json({ error: 'No credentials sent!' });
+  }
+  next();
+});
+
+// protected routes 
+app.use(postRouter);
 
 // database connection
 mongoose.connect(dbString)
