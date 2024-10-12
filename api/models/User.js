@@ -20,10 +20,25 @@ const userSchema = new  mongoose.Schema({
         required: true,
         unqiue: true
     },
+    followers: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        required: true,
+        default: []
+    },
+    followerCount: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     posts: {
         type: [mongoose.SchemaTypes.ObjectId],
         required: true,
         default: []
+    },
+    postCount: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        required: true,
+        default: 0
     },
     banned: {
         type: Boolean,
