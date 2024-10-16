@@ -1,6 +1,30 @@
 import mongoose from "mongoose";
 
-const userSchema = new  mongoose.Schema({
+const followerSchema = new mongoose.Schema({
+    follower: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now()
+    }
+});
+
+const followingSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now()
+    }
+});
+
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -20,8 +44,18 @@ const userSchema = new  mongoose.Schema({
         required: true,
         unqiue: true
     },
+    following: {
+        type: [followingSchema],
+        required: true,
+        default: []
+    },
+    followingCount: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     followers: {
-        type: [mongoose.SchemaTypes.ObjectId],
+        type: [followerSchema],
         required: true,
         default: []
     },
@@ -36,7 +70,7 @@ const userSchema = new  mongoose.Schema({
         default: []
     },
     postCount: {
-        type: [mongoose.SchemaTypes.ObjectId],
+        type: Number,
         required: true,
         default: 0
     },
@@ -52,4 +86,6 @@ const userSchema = new  mongoose.Schema({
     }
 });
 
-export default mongoose.model("User", userSchema);
+export const User = mongoose.model("User", userSchema);
+export const FollowerSchema = followerSchema;
+export const FollowingSchema = followingSchema;

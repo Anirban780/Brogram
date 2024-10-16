@@ -1,6 +1,6 @@
 import jsonwebtoken from 'jsonwebtoken';
 import { jwtSecret } from '../config.js';
-import User from '../models/User.js';
+import {User} from '../models/User.js';
 
 export const genToken = (user) => {
     const token = jsonwebtoken.sign({

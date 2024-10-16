@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 
 import { genToken } from "../../util/token.js";
-import User from "../../models/User.js";
+import { User } from "../../models/User.js";
 
 async function login(req) {
     // response passed to client
