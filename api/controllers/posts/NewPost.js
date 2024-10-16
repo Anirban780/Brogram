@@ -23,7 +23,7 @@ async function newPost(req) {
 
     if (title.split(' ') === "" || body.split(' ') === "") {
         resStatus = 400;
-        resMessage = {"Error", "Title or body is empty"};
+        resMessage = {"Error": "Title or body is empty"};
         
         return { resStatus, resMessage };
     }
