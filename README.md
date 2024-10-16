@@ -74,11 +74,11 @@ And that's it! 🎉 Dev Dialogue should now be running on your local machine. St
 
 
 
-### 🫱 Contributing
+## 🫱 Contributing
 
 We ❤️ contributions! Feel free to submit issues, fork the repo, and send pull requests. Let's build an amazing platform together!
 
-### 📜 License
+## 📜 License
 
 This project is open-source under the MIT License. Check out the LICENSE file for more details.
 
