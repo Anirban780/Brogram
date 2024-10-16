@@ -8,7 +8,7 @@ import authRouter from "./routes/auth.js";
 import postRouter from "./routes/posts.js";
 import userRouter from "./routes/users.js";
 
-// express setup 
+// express setup
 const app = express();
 
 // middleware
@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-// protected routes 
+// protected routes
 app.use(postRouter);
 app.use(userRouter);
 
