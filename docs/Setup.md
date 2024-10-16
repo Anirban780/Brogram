@@ -9,7 +9,7 @@
 `git clone https://github.com/braydenidzenga/Dev-Dialogue.git`
 
 #### Install dependancies
-* `cd backend`
+* `cd api`
 * `npm install`
 
 #### Create .env file
