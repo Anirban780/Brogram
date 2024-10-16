@@ -21,6 +21,7 @@ async function deletePost(req) {
     const { postId } = req.body;
 
     try {
+        // find post in database
         const post = await Post.findOne({_id: postId});
         if (post === null) {
             resStatus = 400;
@@ -29,6 +30,7 @@ async function deletePost(req) {
             return {resStatus, resMessage};
         }
 
+        // checks if authenticated user is the creator of the post
         if (!user._id.equals(post.creator)) {
             resStatus = 400;
             resMessage = {"Error": "Not authorized."};
@@ -36,6 +38,7 @@ async function deletePost(req) {
             return {resStatus, resMessage};
         }
 
+        // deletes post
         await post.deleteOne();
         resStatus = 200;
         resMessage = {"Message": "Post deleted."};
