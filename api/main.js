@@ -8,7 +8,7 @@ import authRouter from "./routes/auth.js";
 import postRouter from "./routes/posts.js";
 import userRouter from "./routes/users.js";
 
-// express setup 
+// express setup
 const app = express();
 
 // middleware
@@ -18,14 +18,14 @@ app.use(cors());
 // non protected routes
 app.use(authRouter);
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   if (!req.headers.authorization) {
-    return res.status(403).json({ error: 'No credentials sent!' });
+    return res.status(403).json({ error: "No credentials sent!" });
   }
   next();
 });
 
-// protected routes 
+// protected routes
 app.use(postRouter);
 app.use(userRouter);
 
