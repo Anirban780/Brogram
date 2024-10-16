@@ -19,6 +19,13 @@ async function login(req) {
             return {resStatus, resMessage};
         }
 
+        // checks if user is banned
+        if (user.banned) {
+            resStatus = 400;
+            resMessage = {"Error": "User is banned."};
+            return {resStatus, resMessage};
+        }
+
         // compares the user password to the password input
         const passMatch = await bcrypt.compare(password, user.password);
         if (!passMatch) {
