@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
-import User from "../../models/User.js";
+import { User } from "../../models/User.js";
 import { genToken } from "../../util/token.js";
 
 async function signup(req) {
@@ -28,10 +28,15 @@ async function signup(req) {
 
         // create and save new user object
         const newUser = new User({
-            name,
-            username,
-            email,
-            password: hashedPass
+            name: name,
+            username: username,
+            email: email,
+            password: hashedPass,
+            followers: [],
+            followerCount: 0,
+            posts: [],
+            postCount: 0,
+            banned: false
         });
         await newUser.save();
        
