@@ -18,7 +18,7 @@ async function getUserDetails(req) {
   const { userId } = req.params;
   try {
     const userDetails = await User.findOne({ _id: userId }).select(
-      "name username postCount followerCount"
+      "name username postCount followerCount followingCount"
     );
     if (!userDetails) {
       resStatus = 404;
@@ -32,6 +32,7 @@ async function getUserDetails(req) {
       username: userDetails.username,
       postCount: userDetails.postCount,
       followerCount: userDetails.followerCount,
+      followingCount: userDetails.followingCount
     };
   } catch (err) {
     console.log(err);
