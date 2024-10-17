@@ -6,7 +6,7 @@ export const genToken = (user) => {
     const token = jsonwebtoken.sign({
         id: user._id,
         email: user.email
-    }, jwtSecret, { expiresIn: '1h' });
+    }, jwtSecret, { expiresIn: '3h' });
 
     return token;
 }
