@@ -12,9 +12,6 @@ function App() {
           <Route path="/" element={<Navigate to="getting-started" />} />
           <Route path="/getting-started" element={<LandingHome />} />
 
-
-          
-
         </Routes>
         </BrowserRouter>
       </ThemeProvider>
