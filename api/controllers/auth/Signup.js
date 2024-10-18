@@ -77,6 +77,16 @@ async function validateInput(username, email, password, confirmPassword) {
     errors.push("Username in use.");
   }
 
+  // Username regex: only allow lowercase letters, underscores, dashes, and periods
+  const usernameRegex = /^[a-z._-]+$/;
+  // Check if username is valid
+  if (!usernameRegex.test(username)) {
+    error = true;
+    errors.push(
+      "Username can only contain lowercase letters, underscores, dashes, and periods. Spaces are not allowed."
+    );
+  }
+
   // check if email is valid. If valid check if in use
   if (!validateEmail) {
     error = true;
