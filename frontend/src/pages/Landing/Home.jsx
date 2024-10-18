@@ -18,7 +18,7 @@ export function Home() {
           <div className="flex items-center space-x-4 md:space-x-1 mx-2">
             <a className="flex items-center space-x-2" href="#">
               <Code className="h-6 w-6 text-primary" />
-              <span className="font-bold hidden md:block">DevDialogue</span>
+              <span className="font-bold hidden md:block">Brogram</span>
             </a>
           </div>
           
@@ -29,7 +29,7 @@ export function Home() {
                   <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="search"
-                    placeholder="Search DevDialogue"
+                    placeholder="Search Brogram"
                     className="w-full pl-8 md:w-[200px] lg:w-[300px]" />
                 </div>
               </form>
@@ -71,7 +71,7 @@ export function Home() {
                 <div className="space-y-2">
                   <h1
                     className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Welcome to DevDialogue
+                    Welcome to Brogram
                   </h1>
                   <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
                     Dive into developer discussions, share your code insights, and connect with fellow programmers who share your passion for technology.
@@ -79,7 +79,7 @@ export function Home() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button className="inline-flex items-center justify-center">
-                    Join DevDialogue
+                    Join Brogram
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                   <Button variant="outline">Learn More</Button>
@@ -128,7 +128,7 @@ export function Home() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Join the Dev Conversation</h2>
                 <p
                   className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  Sign up now to be part of the DevDialogue community. Share your code snippets, discuss the latest tech trends, and engage in discussions on topics youre passionate about in the world of development.
+                  Sign up now to be part of the Brogram community. Share your code snippets, discuss the latest tech trends, and engage in discussions on topics youre passionate about in the world of development.
                 </p>
               </div>
               <Button className="inline-flex items-center justify-center" size="lg">

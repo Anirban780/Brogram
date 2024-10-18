@@ -1,20 +1,13 @@
-# Dev Dialogue 🗨️
+# Brogram 🗨️
 
-Welcome to **Dev Dialogue**, an open-source social media platform designed exclusively for developers! Connect, share, and collaborate with fellow devs all around the world! 🌍
+Welcome to **Brogram**, an open-source social media platform designed exclusively for developers! Connect, share, and collaborate with fellow devs all around the world! 🌍
 
 > [!TIP]
->  Love Dev Dialogue? Click "Star" at the top to support the project! 🌟
-
-## 🚀 Features
-
-- Developer profiles 👩‍💻👨‍💻
-- Share your projects 🛠️
-- Engage in discussions 💬
-- Real-time collaboration 🤝
+>  Love Brogram? Click "Star" at the top to support the project! 🌟
 
 ## 🛠️ Setup Guide
 
-Follow these simple steps to get Dev Dialogue up and running on your machine! 💻
+Follow these simple steps to get Brogram up and running on your machine! 💻
 
 ### ⚙️ Requirements
 
@@ -30,7 +23,7 @@ Follow these simple steps to get Dev Dialogue up and running on your machine! �
 First, clone this repository to your local machine:
 
 ```
-git clone https://github.com/braydenidzenga/Dev-Dialogue.git
+git clone https://github.com/braydenidzenga/Brogram.git
 ```
 
 02. **Install Dependencies**
@@ -91,7 +84,7 @@ npm run dev
 npm start
 ```
 
-And that's it! 🎉 Dev Dialogue should now be running on your local machine. Start coding and join the conversation!
+And that's it! 🎉 Brogram should now be running on your local machine. Start coding and join the conversation!
 
 
 
