@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from './components/theme-provider'
-import LandingHome from './pages/Landing/LandingHome'
+import GettingStarted from './pages/Landing/GettingStarted'
+import { Home } from './pages/Landing/Home'
 
 
 function App() {
@@ -10,7 +11,10 @@ function App() {
         <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="getting-started" />} />
-          <Route path="/getting-started" element={<LandingHome />} />
+          <Route path="/getting-started" element={<GettingStarted />} />
+          <Route path="/home" element={<Home />} /> 
+          
+          <Route path="*" element={<Navigate to="/" />} />
 
         </Routes>
         </BrowserRouter>

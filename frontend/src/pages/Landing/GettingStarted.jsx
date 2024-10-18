@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function LandingHome() {
+function GettingStarted() {
     const navigate = useNavigate();
     const slugs = [
     "typescript",
@@ -84,4 +84,4 @@ function LandingHome() {
   )
 }
 
-export default LandingHome
+export default GettingStarted
