@@ -105,6 +105,14 @@ async function validateInput(username, email, password, confirmPassword) {
     errors.push("Passwords do not match");
   }
 
+  //validating password
+  if (!validatePassword(password)) {
+    error = true;
+    errors.push(
+      "Password must be at least 12 characters long, with at least one special character and one number."
+    );
+  }
+
   // if error returns errors if not returns null
   if (error) {
     return errors;
@@ -122,4 +130,19 @@ function validateEmail(email) {
     );
 }
 
+//password validation function
+function validatePassword(password) {
+  const hasNumber = /\d/; // checks for at least one digit
+  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/; //checks for at least one special character
+
+  if (password.length < 12) return false;
+  
+  if (!hasNumber.test(password) || !hasSpecialChar.test(password))  return false;
+  
+  return true;
+}
+
+
 export default signup;
+
+
