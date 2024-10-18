@@ -134,8 +134,7 @@ function validateEmail(email) {
 function validatePassword(password) {
   const hasNumber = /\d/; // checks for at least one digit
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/; //checks for at least one special character
-
-  if (password.length < 12) return false;
+  if (!password || password.length < 12) return false;
   
   if (!hasNumber.test(password) || !hasSpecialChar.test(password))  return false;
   
