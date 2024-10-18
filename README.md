@@ -35,14 +35,35 @@ git clone https://github.com/braydenidzenga/Dev-Dialogue.git
 
 02. **Install Dependencies**
 
+#### Frontend
+Navigate to the **frontend**  folder and install the necessary dependencies:
+
+```
+cd frontend
+npm install
+```
+**Running frontend :**
+> [!NOTE]
+>  Use different Terminal Instances for frontend & api 
+
+- For Development 🧑‍💻:
+```
+npm run dev
+```
+
+- For Production 🏭:
+```
+npm run build
+```
+
+#### Backend
 Navigate to the **api** folder and install the necessary dependencies:
 
 ```
 cd api
 npm install
 ```
-
-03. **Create the **.env** File**
+ **Create the **.env** File**
 
 Next, you'll need to create an environment configuration file. In the root of the api directory, create a file called .env:
 
@@ -58,7 +79,7 @@ DB=[your-mongodb-connection-string]
 JWT_SECRET=[your-jwt-secret-key]
 ```
 
-04. **Run the Program**
+**Run the Program**
 
 - For Development 🧑‍💻:
 ```
