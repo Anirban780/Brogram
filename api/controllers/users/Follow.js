@@ -1,4 +1,4 @@
-import { User, FollowerSchema } from "../../models/User.js";
+import { User } from "../../models/User.js";
 import { verifyToken } from "../../util/token.js";
 
 async function follow(req) {
@@ -49,7 +49,7 @@ async function follow(req) {
                 x = 0;
                 while (x !== user.followingCount) {
                     if (user.following[x].user.equals(userToFollow._id)) {
-                        followingId = user.following[x].user;
+                        followingId = user.following[x]._id;
                     }
                     x++;
                 }
@@ -58,15 +58,13 @@ async function follow(req) {
 
         // follows if not followed already. unfollows if already followed
         if (userAlrFollowing) {
-            const y = userToFollow.followers.id(followId);
+            const follow = userToFollow.followers.id(followId);
             userToFollow.followerCount--;
-            y.deleteOne();
+            follow.deleteOne();
 
-            const following = user.following.id(followingId);
-            if (following !== null) {
-                following.deleteOne();
-                user.followingCount--;
-            }
+            const following = await user.following.id(followingId);
+            following.deleteOne();
+            user.followingCount--;
 
             resStatus = 200;
             resMessage = {"Message": "Unfollowed user."};
