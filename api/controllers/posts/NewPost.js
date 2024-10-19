@@ -4,7 +4,7 @@ import { verifyToken } from "../../util/token.js";
 
 async function newPost(req) {
   // response sent back to the client
-  let resStatus = 200;
+  let resStatus = 201;
   let resMessage = {};
 
   // verify that the user is authenticated
@@ -13,7 +13,7 @@ async function newPost(req) {
 
   const user = await verifyToken(token);
   if (user === null) {
-    resStatus = 400;
+    resStatus = 401;
     resMessage = { Error: "Not authenticated" };
 
     return { resStatus, resMessage };

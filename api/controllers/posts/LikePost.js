@@ -11,19 +11,19 @@ async function likePost(req) {
 
     const user = await verifyToken(token);
     if (user === null) {
-        resStatus = 400;
+        resStatus = 401;
         resMessage = {"Error": "Not authenticated."};
 
         return {resStatus, resMessage};
     }
 
-    const {postId} = req.body;
+    const { postId } = req.params;
 
     try {
         // fetch the post from the database
         const post = await Post.findById(postId);
         if (post === null) {
-            resStatus = 400;
+            resStatus = 404;
             resMessage = {"Error": "Post not found."};
             return {resStatus, resMessage};
         }
@@ -51,7 +51,6 @@ async function likePost(req) {
             post.likeCount--;
             y.deleteOne();
 
-            resStatus = 200;
             resMessage = {"Message": "Removed like"};
         } else {
             post.likes.push({
@@ -59,7 +58,6 @@ async function likePost(req) {
             });
             post.likeCount++;
 
-            resStatus = 200;
             resMessage = {"Message": "Liked post"};
         }
 

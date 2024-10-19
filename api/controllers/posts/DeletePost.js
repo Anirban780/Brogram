@@ -12,19 +12,19 @@ async function deletePost(req) {
 
   const user = await verifyToken(token);
   if (user === null) {
-    resStatus = 400;
+    resStatus = 401;
     resMessage = { Error: "Not authenticated" };
 
     return { resStatus, resMessage };
   }
 
-  const { postId } = req.body;
+  const { postId } = req.params;
 
   try {
     // find post in database
     const post = await Post.findOne({ _id: postId });
     if (post === null) {
-      resStatus = 400;
+      resStatus = 404;
       resMessage = { Error: "Post not found." };
 
       return { resStatus, resMessage };
@@ -32,7 +32,7 @@ async function deletePost(req) {
 
     // checks if authenticated user is the creator of the post
     if (!user._id.equals(post.creator)) {
-      resStatus = 400;
+      resStatus = 403;
       resMessage = { Error: "Not authorized." };
 
       return { resStatus, resMessage };
@@ -51,7 +51,6 @@ async function deletePost(req) {
       { new: true }
     );
 
-    resStatus = 200;
     resMessage = { Message: "Post deleted.", postCount: getUser.postCount };
 
     return { resStatus, resMessage };
