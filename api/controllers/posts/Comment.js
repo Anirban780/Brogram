@@ -17,7 +17,9 @@ async function Comment(req) {
         return { resStatus, resMessage };
     }
 
-    const { postId, comment } = req.body;
+    const { postId } = req.params;
+    const { comment } = req.body
+
     // check for empty comment
     if (comment.split(' ') === '') {
         resStatus = 400;

@@ -17,7 +17,7 @@ async function likePost(req) {
         return {resStatus, resMessage};
     }
 
-    const {postId} = req.body;
+    const { postId } = req.params;
 
     try {
         // fetch the post from the database

@@ -18,7 +18,7 @@ async function deletePost(req) {
     return { resStatus, resMessage };
   }
 
-  const { postId } = req.body;
+  const { postId } = req.params;
 
   try {
     // find post in database

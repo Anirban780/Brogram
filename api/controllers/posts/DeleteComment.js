@@ -17,7 +17,7 @@ async function DeleteComment(req) {
         return { resStatus, resMessage };
     }
 
-    const { postId, commentId } = req.body;
+    const { postId, commentId } = req.params;
 
     try {
         // find post in database
