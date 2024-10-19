@@ -2,7 +2,7 @@ import { Post, CommentSchema } from "../../models/Post.js";
 import { verifyToken } from "../../util/token.js";
 
 async function Comment(req) {
-    let resStatus = 200;
+    let resStatus = 201;
     let resMessage = {};
     
     // verify that the user is authenticated
@@ -11,7 +11,7 @@ async function Comment(req) {
 
     const user = await verifyToken(token);
     if (user === null) {
-        resStatus = 400;
+        resStatus = 401;
         resMessage = {"Error": "Not authenticated"};
 
         return { resStatus, resMessage };
@@ -32,7 +32,7 @@ async function Comment(req) {
         // find post in database
         const post = await Post.findOne({_id:postId});
         if (post === null) {
-            resStatus = 400;
+            resStatus = 404;
             resMessage = {"Error": "Post not found"};
             return {resStatus, resMessage};
         }
@@ -45,7 +45,6 @@ async function Comment(req) {
         post.commentCount++;
         await post.save();
 
-        resStatus = 200;
         resMessage = {"Message": "Comment posted"};
         return {resStatus, resMessage};
     } catch (err) {

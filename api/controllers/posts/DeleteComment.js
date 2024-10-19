@@ -11,7 +11,7 @@ async function DeleteComment(req) {
 
     const user = await verifyToken(token);
     if (user === null) {
-        resStatus = 400;
+        resStatus = 401;
         resMessage = {"Error": "Not authenticated"};
 
         return { resStatus, resMessage };
@@ -23,7 +23,7 @@ async function DeleteComment(req) {
         // find post in database
         const post = await Post.findOne({_id: postId});
         if (post === null) {
-            resStatus = 400;
+            resStatus = 404;
             resMessage = {"Error": "Post not found."};
             return {resStatus, resMessage};
         }
@@ -31,13 +31,13 @@ async function DeleteComment(req) {
         // find the comment and check if the user posted the comment
         const comment = post.comments.id(commentId);
         if (comment === null) {
-            resStatus = 400;
+            resStatus = 404;
             resMessage = {"Error": "Comment not found"};
             return {resStatus, resMessage};
         }
 
         if (!comment.creator.equals(user._id)) {
-            resStatus = 400;
+            resStatus = 403;
             resMessage = {"Error": "Not authorized"};
             return {resStatus, resMessage};
         }
@@ -47,7 +47,6 @@ async function DeleteComment(req) {
         post.commentCount--;
         await post.save();
 
-        resStatus = 200;
         resMessage = {"Message": "Comment deleted"};
         return {resStatus, resMessage};
     } catch (err) {
