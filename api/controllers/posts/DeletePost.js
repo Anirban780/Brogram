@@ -1,22 +1,9 @@
 import { Post } from "../../models/Post.js";
-import { User } from "../../models/User.js"; // Import User model
-import { verifyToken } from "../../util/token.js";
+import { User } from "../../models/User.js";
 
 async function deletePost(req) {
   let resStatus = 200;
   let resMessage = {};
-
-  // verify that the user is authenticated
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-
-  const user = await verifyToken(token);
-  if (user === null) {
-    resStatus = 401;
-    resMessage = { Error: "Not authenticated" };
-
-    return { resStatus, resMessage };
-  }
 
   const { postId } = req.params;
 
@@ -31,7 +18,7 @@ async function deletePost(req) {
     }
 
     // checks if authenticated user is the creator of the post
-    if (!user._id.equals(post.creator)) {
+    if (!req.user._id.equals(post.creator)) {
       resStatus = 403;
       resMessage = { Error: "Not authorized." };
 
