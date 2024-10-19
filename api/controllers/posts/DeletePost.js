@@ -30,7 +30,7 @@ async function deletePost(req) {
 
     // find the user and update the postCount and posts array
     const getUser = await User.findByIdAndUpdate(
-      user._id,
+      req.user._id,
       {
         $pull: { posts: postId }, // Remove post from user's posts array
         $inc: { postCount: -1 }, // Decrement the postCount by 1
