@@ -1,0 +1,87 @@
+@TOKEN = your_token_here
+@postId = your_post_id_here
+@userId = your_user_id_here
+@commentId = your_comment_id_here
+
+# 1. Sign Up (POST /auth/signup)
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "name": "newname",
+  "username": "newuser",
+  "email": "new@email.com",
+  "password": "password123!",
+  "confirmPassword": "password123!"
+}
+
+###
+
+# 2. Log In (POST /auth/login)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "newuser",
+  "password": "password123!"
+}
+
+###
+
+# 3. Create a New Post (POST /posts)
+POST http://localhost:3000/posts
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "title": "My First Post",
+  "body": "This is the content of the post."
+}
+
+###
+
+# 4. Like a Post (POST /posts/:postId/like)
+POST http://localhost:3000/posts/{{postId}}/like
+Authorization: Bearer {{TOKEN}}
+
+###
+
+# 5. Delete a Post (DELETE /posts/:postId)
+DELETE http://localhost:3000/posts/{{postId}}
+Authorization: Bearer {{TOKEN}}
+
+###
+
+# 6. Add a Comment (POST /posts/:postId/comments)
+POST http://localhost:3000/posts/{{postId}}/comments
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "comment": "This is a comment."
+}
+
+###
+
+# 7. Delete a Comment (DELETE /posts/:postId/comments/:commentId)
+DELETE http://localhost:3000/posts/{{postId}}/comments/{{commentId}}
+Authorization: Bearer {{TOKEN}}
+
+###
+
+# 8. Follow a User (POST /users/:userId/follow)
+POST http://localhost:3000/users/{{userId}}/follow
+Authorization: Bearer {{TOKEN}}
+
+###
+
+# 9. Get a User's Profile (GET /users/:userId)
+GET http://localhost:3000/users/{{userId}}
+Authorization: Bearer {{TOKEN}}
+
+###
+
+# 10. Delete Account (DELETE /users/:userId)
+DELETE http://localhost:3000/users/{{userId}}
+Authorization: Bearer {{TOKEN}}
+
