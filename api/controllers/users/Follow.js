@@ -49,7 +49,7 @@ async function follow(req) {
             userToFollow.followerCount--;
             follow.deleteOne();
 
-            const following = await user.following.id(followingId);
+            const following = await req.user.following.id(followingId);
             following.deleteOne();
             req.user.followingCount--;
 
