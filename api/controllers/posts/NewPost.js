@@ -1,23 +1,10 @@
 import { Post } from "../../models/Post.js";
-import { User } from "../../models/User.js"; // Import the User model
-import { verifyToken } from "../../util/token.js";
+import { User } from "../../models/User.js";
 
 async function newPost(req) {
   // response sent back to the client
   let resStatus = 201;
   let resMessage = {};
-
-  // verify that the user is authenticated
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-
-  const user = await verifyToken(token);
-  if (user === null) {
-    resStatus = 401;
-    resMessage = { Error: "Not authenticated" };
-
-    return { resStatus, resMessage };
-  }
 
   // gets the input and checks for empty strings
   const { title, body } = req.body;
@@ -34,14 +21,14 @@ async function newPost(req) {
     const post = new Post({
       title,
       body,
-      creator: user._id,
+      creator: req.user._id,
     });
 
     await post.save();
 
     // Find the user and update their postCount and posts array
     const updatedUser = await User.findByIdAndUpdate(
-      user._id,
+      req.user._id,
       {
         $push: { posts: post._id }, // Add new post ID to the posts array
         $inc: { postCount: 1 }, // Increment the postCount by 1

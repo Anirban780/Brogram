@@ -1,23 +1,10 @@
 import { User } from "../../models/User.js";
-import { verifyToken } from "../../util/token.js";
 
 async function follow(req) {
     let resStatus = 200;
     let resMessage = {};
 
-    // verify that the user is authenticated
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
-    const user = await verifyToken(token);
-    if (user === null) {
-        resStatus = 400;
-        resMessage = {"Error": "Not authenticated"};
-
-        return { resStatus, resMessage };
-    }
-
-    const {userId} = req.body;
+    const {userId} = req.params;
 
     try {
         // find the user in the database
@@ -38,18 +25,18 @@ async function follow(req) {
             let x = 0;
 
             while (x !== userToFollow.followerCount) {
-                if (followers[x].follower.equals(user._id)) {
+                if (followers[x].follower.equals(req.user._id)) {
                     userAlrFollowing = true;
                     followId = followers[x]._id;
                 }
                 x++;
             }
 
-            if (userAlrFollowing && user.followingCount !== 0) {
+            if (userAlrFollowing && req.user.followingCount !== 0) {
                 x = 0;
-                while (x !== user.followingCount) {
-                    if (user.following[x].user.equals(userToFollow._id)) {
-                        followingId = user.following[x]._id;
+                while (x !== req.user.followingCount) {
+                    if (req.user.following[x].user.equals(userToFollow._id)) {
+                        followingId = req.user.following[x]._id;
                     }
                     x++;
                 }
@@ -64,27 +51,27 @@ async function follow(req) {
 
             const following = await user.following.id(followingId);
             following.deleteOne();
-            user.followingCount--;
+            req.user.followingCount--;
 
             resStatus = 200;
             resMessage = {"Message": "Unfollowed user."};
         } else {
             userToFollow.followers.push({
-                follower: user._id
+                follower: req.user._id
             });
             userToFollow.followerCount++;
 
-            user.following.push({
+            req.user.following.push({
                 user: userToFollow._id
             });
-            user.followingCount++;
+            req.user.followingCount++;
 
             resStatus = 200;
             resMessage = {"Message": "Followed user"};
         }
 
         // save changes to the database
-        await user.save();
+        await req.user.save();
         await userToFollow.save();
         return {resStatus, resMessage};
 

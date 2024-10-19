@@ -1,19 +1,8 @@
 import { User } from "../../models/User.js";
-import { verifyToken } from "../../util/token.js";
 
 async function getUserDetails(req) {
   let resStatus = 200;
   let resMessage = {};
-
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-
-  const user = await verifyToken(token);
-  if (user === null) {
-    resStatus = 400;
-    resMessage = { Error: "Not authenticated" };
-    return { resStatus, resMessage };
-  }
 
   const { userId } = req.params;
   try {

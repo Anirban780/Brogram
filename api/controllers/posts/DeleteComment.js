@@ -1,21 +1,8 @@
 import { Post, CommentSchema } from "../../models/Post.js";
-import { verifyToken } from "../../util/token.js";
 
 async function DeleteComment(req) {
     let resStatus = 200;
     let resMessage = {};
-    
-    // verify that the user is authenticated
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
-    const user = await verifyToken(token);
-    if (user === null) {
-        resStatus = 401;
-        resMessage = {"Error": "Not authenticated"};
-
-        return { resStatus, resMessage };
-    }
 
     const { postId, commentId } = req.params;
 
@@ -36,7 +23,7 @@ async function DeleteComment(req) {
             return {resStatus, resMessage};
         }
 
-        if (!comment.creator.equals(user._id)) {
+        if (!comment.creator.equals(req.user._id)) {
             resStatus = 403;
             resMessage = {"Error": "Not authorized"};
             return {resStatus, resMessage};

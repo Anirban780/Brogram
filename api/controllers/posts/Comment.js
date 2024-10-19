@@ -1,21 +1,8 @@
 import { Post, CommentSchema } from "../../models/Post.js";
-import { verifyToken } from "../../util/token.js";
 
 async function Comment(req) {
     let resStatus = 201;
     let resMessage = {};
-    
-    // verify that the user is authenticated
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
-    const user = await verifyToken(token);
-    if (user === null) {
-        resStatus = 401;
-        resMessage = {"Error": "Not authenticated"};
-
-        return { resStatus, resMessage };
-    }
 
     const { postId } = req.params;
     const { comment } = req.body
@@ -40,7 +27,7 @@ async function Comment(req) {
         // Create comment and save to the database
         post.comments.push({
             body: comment,
-            creator: user._id
+            creator: req.user._id
         });
         post.commentCount++;
         await post.save();
