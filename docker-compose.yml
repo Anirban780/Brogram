@@ -1,0 +1,12 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./api #api backend folder
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./api:/app
+    command: npm start
