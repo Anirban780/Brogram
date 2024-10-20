@@ -9,4 +9,8 @@ services:
       - ./api/.env
     volumes:
       - ./api:/app
+    db:
+      image: mongo:latest
+      ports:
+        - "27018:27017"
     command: npm start
