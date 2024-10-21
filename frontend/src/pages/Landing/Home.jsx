@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ArrowRight, Search, Code } from "lucide-react"
-
+import { Link, useNavigate } from "react-router-dom";
 export function Home() {
   return (
     // Placeholder UI generated for Home
@@ -35,7 +35,9 @@ export function Home() {
               </form>
             </div>
             <Button className="hidden sm:flex">Log In</Button>
+            <Link to={"/signup"}>
             <Button variant="secondary" className="hidden sm:flex">Sign Up</Button>
+            </Link>
           </div>
         </div>
         <nav
