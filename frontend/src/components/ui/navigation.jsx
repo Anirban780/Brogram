@@ -1,9 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-
 import { Input } from "@/components/ui/input";
 import { Search, Code } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navigation() {
     return (
@@ -34,13 +34,18 @@ export default function Navigation() {
                     </div>
                     <div className="flex gap-4">
                         <Button className="hidden sm:flex">Log In</Button>
-                        <Button variant="secondary" className="hidden sm:flex">
-                            Sign Up
-                        </Button>
+                        <Link to={"/signup"}>
+                            <Button
+                                variant="secondary"
+                                className="hidden sm:flex"
+                            >
+                                Sign Up
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
-            <nav className="flex items-center space-x-6 px-6 lg:px-10 py-6 overflow-x-auto  sm:px-6 text-sm font-medium h-9 border-t md:hidden">
+            <nav className="flex items-center space-x-6 px-6 lg:px-10 py-6   overflow-x-auto  sm:px-6 text-sm font-medium h-9 border-t md:hidden">
                 <a
                     className="transition-colors hover:text-foreground/80 text-foreground/60"
                     href="#"

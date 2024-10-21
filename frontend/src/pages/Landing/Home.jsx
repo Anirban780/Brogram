@@ -1,10 +1,7 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input"
-import { ArrowRight, Search, Code } from "lucide-react"
-import { Link, useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 export function Home() {
     return (
