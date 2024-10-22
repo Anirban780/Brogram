@@ -1,94 +1,94 @@
 import mongoose from "mongoose";
 
 const followerSchema = new mongoose.Schema({
-  follower: {
-    type: mongoose.SchemaTypes.ObjectId,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    required: true,
-    default: Date.now(),
-  },
+    follower: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now(),
+    },
 });
 
 const followingSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.SchemaTypes.ObjectId,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    required: true,
-    default: Date.now(),
-  },
+    user: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now(),
+    },
 });
 
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  profilePicture: {
-    type: String,
-    default:
-      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  following: {
-    type: [followingSchema],
-    required: true,
-    default: [],
-  },
-  followingCount: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  followers: {
-    type: [followerSchema],
-    required: true,
-    default: [],
-  },
-  followerCount: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  posts: {
-    type: [mongoose.SchemaTypes.ObjectId],
-    required: true,
-    default: [],
-  },
-  postCount: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  banned: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
-  createdAt: {
-    type: String,
-    required: true,
-    default: Date.now(),
-  },
+    name: {
+        type: String,
+        required: true,
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    profilePicture: {
+        type: String,
+        default:
+            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    following: {
+        type: [followingSchema],
+        required: true,
+        default: [],
+    },
+    followingCount: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    followers: {
+        type: [followerSchema],
+        required: true,
+        default: [],
+    },
+    followerCount: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    posts: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        required: true,
+        default: [],
+    },
+    postCount: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    banned: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    createdAt: {
+        type: String,
+        required: true,
+        default: Date.now(),
+    },
 });
 
 export const User = mongoose.model("User", userSchema);

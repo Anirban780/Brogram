@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function Home() {
@@ -118,14 +118,25 @@ export function Home() {
                                     in the world of development.
                                 </p>
                             </div>
-                            <Link to={"/signup"}>
-                                <Button
-                                    className="inline-flex items-center justify-center"
-                                    size="lg"
-                                >
-                                    Create an Account
-                                </Button>
-                            </Link>
+                            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                                <Link to={"/signup"}>
+                                    <Button
+                                        className="inline-flex items-center justify-center"
+                                        size="lg"
+                                    >
+                                        Create an Account
+                                    </Button>
+                                </Link>
+                                <Link to={"/getting-started"}>
+                                    <Button
+                                        className="inline-flex items-center justify-center"
+                                        size="lg"
+                                    >
+                                        Getting Started{" "}
+                                        <ArrowUpRight className="mt-[3px] !size-4" />
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </section>

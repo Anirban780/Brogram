@@ -7,6 +7,9 @@ import Footer from "./components/ui/footer";
 import Signup from "./components/Signup";
 import { ToastContainer } from "react-toast";
 import Signin from "./components/Signin";
+import ToS from "./pages/Landing/Terms-of-serivce";
+import PrivacyPolicy from "./pages/Landing/Privacy-policy";
+import ContentPolicy from "./pages/Landing/Content-policy";
 
 function App() {
     return (
@@ -17,18 +20,12 @@ function App() {
                     <Routes>
                         <Route
                             path="/"
-                            element={<Navigate to="getting-started" />}
+                            element={<Layout childern={<Home />} />}
                         />
                         <Route
                             path="/getting-started"
                             element={<Layout childern={<GettingStarted />} />}
                         />
-
-                        <Route
-                            path="/home"
-                            element={<Layout childern={<Home />} />}
-                        />
-
                         <Route
                             path="/signup"
                             element={<Layout childern={<Signup />} />}
@@ -37,6 +34,18 @@ function App() {
                         <Route
                             path="/signin"
                             element={<Layout childern={<Signin />} />}
+                        />
+                        <Route
+                            path="/terms-of-service"
+                            element={<Layout childern={<ToS />} />}
+                        />
+                        <Route
+                            path="/privacy-policy"
+                            element={<Layout childern={<PrivacyPolicy />} />}
+                        />
+                        <Route
+                            path="/content-policy"
+                            element={<Layout childern={<ContentPolicy />} />}
                         />
 
                         <Route path="*" element={<Navigate to="/" />} />
@@ -47,7 +56,6 @@ function App() {
     );
 }
 
-// eslint-disable-next-line react/prop-types
 function Layout({ childern }) {
     return (
         <>

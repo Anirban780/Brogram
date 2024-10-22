@@ -84,8 +84,8 @@ function GettingStarted() {
             {/* ShadCN Setup Showcase */}
             <section className="flex h-[25rem] flex-col items-center justify-center px-8 lg:h-[40rem]">
                 <Button className="mb-8 mt-4" onClick={() => navigate("/home")}>
-                    Open Dummy Landing Page
-                    <ArrowUpRight className="h-2 w-2" />
+                    Go to Home Page
+                    <ArrowUpRight className="mt-[3px] !size-4" />
                 </Button>
 
                 <p className="mt-32 self-center text-gray-500 lg:mt-44">

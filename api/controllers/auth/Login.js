@@ -11,39 +11,38 @@ async function login(req) {
     const { username, password } = req.body;
 
     try {
-        // find the user 
-        const user = await User.findOne({username});
+        // find the user
+        const user = await User.findOne({ username });
         if (!user) {
             resStatus = 400;
-            resMessage = {"Error": "Invalid credentials"};
-            return {resStatus, resMessage};
+            resMessage = { Error: "Invalid credentials" };
+            return { resStatus, resMessage };
         }
 
         // checks if user is banned
         if (user.banned) {
             resStatus = 400;
-            resMessage = {"Error": "User is banned."};
-            return {resStatus, resMessage};
+            resMessage = { Error: "User is banned." };
+            return { resStatus, resMessage };
         }
 
         // compares the user password to the password input
         const passMatch = await bcrypt.compare(password, user.password);
         if (!passMatch) {
             resStatus = 400;
-            resMessage = {"Error": "Invalid credentials."};
-            return {resStatus, resMessage};
+            resMessage = { Error: "Invalid credentials." };
+            return { resStatus, resMessage };
         }
 
         // gen new token and send to user
         const token = genToken(user);
-        resMessage = {"Message": "Logged in.", "token": token};
-        return {resStatus, resMessage};
-
+        resMessage = { Message: "Logged in.", token: token };
+        return { resStatus, resMessage };
     } catch (err) {
         console.log(err);
         resStatus = 500;
-        resMessage = {"Error": "Internal server error."};
-        return {resStatus, resMessage};
+        resMessage = { Error: "Internal server error." };
+        return { resStatus, resMessage };
     }
 }
 

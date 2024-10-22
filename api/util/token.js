@@ -1,15 +1,19 @@
-import jsonwebtoken from 'jsonwebtoken';
-import { jwtSecret } from '../config.js';
-import {User} from '../models/User.js';
+import jsonwebtoken from "jsonwebtoken";
+import { jwtSecret } from "../config.js";
+import { User } from "../models/User.js";
 
 export const genToken = (user) => {
-    const token = jsonwebtoken.sign({
-        id: user._id,
-        email: user.email
-    }, jwtSecret, { expiresIn: '3h' });
+    const token = jsonwebtoken.sign(
+        {
+            id: user._id,
+            email: user.email,
+        },
+        jwtSecret,
+        { expiresIn: "3h" },
+    );
 
     return token;
-}
+};
 
 export const verifyToken = async (token) => {
     let decoded;
@@ -23,4 +27,4 @@ export const verifyToken = async (token) => {
     }
 
     return user;
-}
+};

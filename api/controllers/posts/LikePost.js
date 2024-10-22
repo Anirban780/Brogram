@@ -11,8 +11,8 @@ async function likePost(req) {
         const post = await Post.findById(postId);
         if (post === null) {
             resStatus = 404;
-            resMessage = {"Error": "Post not found."};
-            return {resStatus, resMessage};
+            resMessage = { Error: "Post not found." };
+            return { resStatus, resMessage };
         }
 
         // check if user has already liked the post
@@ -38,28 +38,27 @@ async function likePost(req) {
             post.likeCount--;
             y.deleteOne();
 
-            resMessage = {"Message": "Removed like"};
+            resMessage = { Message: "Removed like" };
         } else {
             post.likes.push({
-                creator: req.user._id 
+                creator: req.user._id,
             });
             post.likeCount++;
 
-            resMessage = {"Message": "Liked post"};
+            resMessage = { Message: "Liked post" };
         }
 
         // save changes to database and return data to client
         await post.save();
         return {
-            resStatus, 
-            resMessage
+            resStatus,
+            resMessage,
         };
-
     } catch (err) {
         console.log(err);
         resStatus = 500;
-        resMessage = {"Error": "Internal server error"};
-        return {resStatus,resMessage};
+        resMessage = { Error: "Internal server error" };
+        return { resStatus, resMessage };
     }
 }
 
