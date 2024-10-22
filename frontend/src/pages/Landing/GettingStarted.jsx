@@ -1,5 +1,4 @@
 import { BackgroundLines } from "@/components/aceternity/background-lines";
-import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import IconCloud from "@/components/ui/icon-cloud";
 import { ArrowUpRight } from "lucide-react";
@@ -43,12 +42,12 @@ function GettingStarted() {
     return (
         <main>
             {/* AcernityUI Setup Showcase */}
-            <BackgroundLines className="flex mb-20 items-center justify-center w-full flex-col px-8 h-[20rem] md:h-[75vh]">
-                <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+            <BackgroundLines className="mb-20 flex h-[20rem] w-full flex-col items-center justify-center px-8 md:h-[75vh]">
+                <h2 className="relative z-20 bg-gradient-to-b from-neutral-900 to-neutral-700 bg-clip-text py-2 text-center font-sans text-2xl font-bold tracking-tight text-transparent md:py-10 md:text-4xl lg:text-7xl dark:from-neutral-600 dark:to-white">
                     Brogram
                     <br />
                 </h2>
-                <p className="max-w-xl mx-auto lg:text-2xl md:text-lg text-neutral-700 dark:text-neutral-400 text-center">
+                <p className="mx-auto max-w-xl text-center text-neutral-700 md:text-lg lg:text-2xl dark:text-neutral-400">
                     A social platform built by developers, for
                     developers—connect, collaborate, share insights, and grow
                     together in an ecosystem that celebrates code and
@@ -57,14 +56,14 @@ function GettingStarted() {
             </BackgroundLines>
 
             {/* MagicUI */}
-            <section className="h-screen max-w-[95rem] pt-12 mx-auto flex flex-col items-center justify-center px-8 mb-20">
+            <section className="mx-auto mb-20 flex h-screen max-w-[95rem] flex-col items-center justify-center px-8 pt-12">
                 <div className="mb-12 lg:mb-24">
-                    <h2 className="bg-clip-text text-transparent   bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 mb-6 dark:to-white text-2xl  md:text-4xl lg:text-5xl font-sans py-2 md:pt-10 relative z-20 font-bold tracking-tight">
+                    <h2 className="relative z-20 mb-6 bg-gradient-to-b from-neutral-900 to-neutral-700 bg-clip-text py-2 font-sans text-2xl font-bold tracking-tight text-transparent md:pt-10 md:text-4xl lg:text-5xl dark:from-neutral-600 dark:to-white">
                         Supporting Innovation Across Multiple Tools and
                         Languages
                         <br />
                     </h2>
-                    <p className=" md:text-lg">
+                    <p className="md:text-lg">
                         At Brogram, we believe innovation thrives through
                         diversity. That’s why we support discussions across a
                         wide range of tools, frameworks, and programming
@@ -77,19 +76,19 @@ function GettingStarted() {
                     </p>
                 </div>
 
-                <div className="relative flex size-full   max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background px-20 pb-20 pt-8 ">
+                <div className="bg-background relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border px-20 pb-20 pt-8">
                     <IconCloud iconSlugs={slugs} />
                 </div>
             </section>
 
             {/* ShadCN Setup Showcase */}
-            <section className="h-[25rem] lg:h-[40rem] flex px-8 flex-col items-center justify-center ">
-                <Button className="mt-4 mb-8" onClick={() => navigate("/home")}>
+            <section className="flex h-[25rem] flex-col items-center justify-center px-8 lg:h-[40rem]">
+                <Button className="mb-8 mt-4" onClick={() => navigate("/home")}>
                     Open Dummy Landing Page
-                    <ArrowUpRight className="w-2 h-2" />
+                    <ArrowUpRight className="h-2 w-2" />
                 </Button>
-                <ModeToggle />
-                <p className="text-gray-500 self-center mt-32 lg:mt-44">
+
+                <p className="mt-32 self-center text-gray-500 lg:mt-44">
                     Built with ❤️ using ShadCn and React Router
                 </p>
             </section>
