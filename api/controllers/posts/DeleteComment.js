@@ -8,25 +8,25 @@ async function DeleteComment(req) {
 
     try {
         // find post in database
-        const post = await Post.findOne({_id: postId});
+        const post = await Post.findOne({ _id: postId });
         if (post === null) {
             resStatus = 404;
-            resMessage = {"Error": "Post not found."};
-            return {resStatus, resMessage};
+            resMessage = { Error: "Post not found." };
+            return { resStatus, resMessage };
         }
 
         // find the comment and check if the user posted the comment
         const comment = post.comments.id(commentId);
         if (comment === null) {
             resStatus = 404;
-            resMessage = {"Error": "Comment not found"};
-            return {resStatus, resMessage};
+            resMessage = { Error: "Comment not found" };
+            return { resStatus, resMessage };
         }
 
         if (!comment.creator.equals(req.user._id)) {
             resStatus = 403;
-            resMessage = {"Error": "Not authorized"};
-            return {resStatus, resMessage};
+            resMessage = { Error: "Not authorized" };
+            return { resStatus, resMessage };
         }
 
         // delete the comment and save changes
@@ -34,12 +34,12 @@ async function DeleteComment(req) {
         post.commentCount--;
         await post.save();
 
-        resMessage = {"Message": "Comment deleted"};
-        return {resStatus, resMessage};
+        resMessage = { Message: "Comment deleted" };
+        return { resStatus, resMessage };
     } catch (err) {
         console.log(err);
         resStatus = 500;
-        resMessage = {"Message": "Internal server error"};
+        resMessage = { Message: "Internal server error" };
     }
 }
 

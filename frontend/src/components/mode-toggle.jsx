@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { useState, useEffect } from "react";
 
-// eslint-disable-next-line react/prop-types
 export function ModeToggle({ className = "" }) {
     const { theme, setTheme } = useTheme();
     const [isDark, setIsDark] = useState(false);

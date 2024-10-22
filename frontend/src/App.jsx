@@ -20,18 +20,12 @@ function App() {
                     <Routes>
                         <Route
                             path="/"
-                            element={<Navigate to="getting-started" />}
+                            element={<Layout childern={<Home />} />}
                         />
                         <Route
                             path="/getting-started"
                             element={<Layout childern={<GettingStarted />} />}
                         />
-
-                        <Route
-                            path="/home"
-                            element={<Layout childern={<Home />} />}
-                        />
-
                         <Route
                             path="/signup"
                             element={<Layout childern={<Signup />} />}
@@ -62,7 +56,6 @@ function App() {
     );
 }
 
-// eslint-disable-next-line react/prop-types
 function Layout({ childern }) {
     return (
         <>

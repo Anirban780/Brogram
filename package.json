@@ -1,6 +1,10 @@
 {
-  "devDependencies": {
-    "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.8"
-  }
+    "scripts": {
+        "format": " prettier . --write"
+    },
+    "devDependencies": {
+        "eslint-config-prettier": "^9.1.0",
+        "prettier": "^3.3.3",
+        "prettier-plugin-tailwindcss": "^0.6.8"
+    }
 }

@@ -4,15 +4,15 @@ async function follow(req) {
     let resStatus = 200;
     let resMessage = {};
 
-    const {userId} = req.params;
+    const { userId } = req.params;
 
     try {
         // find the user in the database
-        const userToFollow = await User.findOne({_id:userId});
+        const userToFollow = await User.findOne({ _id: userId });
         if (userToFollow === null) {
             resStatus = 400;
-            resMessage = {"Error": "User not found."};
-            return {resStatus, resMessage};
+            resMessage = { Error: "User not found." };
+            return { resStatus, resMessage };
         }
 
         // Check if the user is already following
@@ -54,31 +54,30 @@ async function follow(req) {
             req.user.followingCount--;
 
             resStatus = 200;
-            resMessage = {"Message": "Unfollowed user."};
+            resMessage = { Message: "Unfollowed user." };
         } else {
             userToFollow.followers.push({
-                follower: req.user._id
+                follower: req.user._id,
             });
             userToFollow.followerCount++;
 
             req.user.following.push({
-                user: userToFollow._id
+                user: userToFollow._id,
             });
             req.user.followingCount++;
 
             resStatus = 200;
-            resMessage = {"Message": "Followed user"};
+            resMessage = { Message: "Followed user" };
         }
 
         // save changes to the database
         await req.user.save();
         await userToFollow.save();
-        return {resStatus, resMessage};
-
+        return { resStatus, resMessage };
     } catch (err) {
         console.log(err);
         resStatus = 500;
-        resMessage = {"Message": "Internal server error"};
+        resMessage = { Message: "Internal server error" };
     }
 }
 

@@ -1,4 +1,4 @@
-export  const slugs = [
+export const slugs = [
     "typescript",
     "javascript",
     "dart",
@@ -29,4 +29,4 @@ export  const slugs = [
     "androidstudio",
     "sonarqube",
     "figma",
-    ];
+];
