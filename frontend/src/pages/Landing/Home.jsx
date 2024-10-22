@@ -2,19 +2,20 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function Home() {
     return (
         // Placeholder UI generated for Home
         // scope of breaking this down into smaller components and layouts (if this example is considered)
-        <div className="flex flex-col min-h-screen ">
+        <div className="flex min-h-screen flex-col">
             <main className="flex-1 px-4 lg:px-10">
-                <section className="w-full py-12 md:py-24 mb-8 lg:max-w-[97.5%] mx-auto lg:py-32 xl:py-32 lg:min-h-[85vh] ">
-                    <div className="container px-4 md:px-6 ">
+                <section className="mx-auto mb-8 w-full py-12 md:py-24 lg:min-h-[85vh] lg:max-w-[97.5%] lg:py-32 xl:py-32">
+                    <div className="container px-4 md:px-6">
                         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-                            <div className="flex flex-col mb-4 justify-center space-y-4">
-                                <div className="space-y-2 mb-2">
-                                    <h1 className="text-3xl mb-4 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                            <div className="mb-4 flex flex-col justify-center space-y-4">
+                                <div className="mb-2 space-y-2">
+                                    <h1 className="mb-4 text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                                         Welcome to Brogram
                                     </h1>
                                     <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
@@ -27,7 +28,7 @@ export function Home() {
                                 <div className="flex flex-col gap-3 min-[400px]:flex-row">
                                     <Button className="inline-flex items-center justify-center">
                                         Join Brogram
-                                        <ArrowRight className="ml-2 h-4 w-4" />
+                                        <ArrowRight className="ml-2 size-4" />
                                     </Button>
                                     <Button variant="outline">
                                         Learn More
@@ -44,9 +45,9 @@ export function Home() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full pb-12 mb-8 pt-8 md:py-24 lg:py-20 max-w-[95%] mx-auto bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <section className="mx-auto mb-8 w-full max-w-[95%] rounded-lg bg-gray-100 pb-12 pt-8 md:py-24 lg:py-20 dark:bg-gray-800">
                     <div className="container px-4 md:px-6 lg:pl-12">
-                        <h2 className="text-3xl font-bold tracking-tighter break-words sm:text-5xl text-center mb-12 lg:mb-20">
+                        <h2 className="mb-12 break-words text-center text-3xl font-bold tracking-tighter sm:text-5xl lg:mb-20">
                             Popular Dev Communities 🔥
                         </h2>
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -102,14 +103,14 @@ export function Home() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full py-12 md:py-24 lg:py-32 mb-12">
+                <section className="mb-12 w-full py-12 md:py-24 lg:py-32">
                     <div className="container px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                            <div className="space-y-2 mb-4">
-                                <h2 className="text-3xl font-bold tracking-tighter mb-8 sm:text-5xl">
+                            <div className="mb-4 space-y-2">
+                                <h2 className="mb-8 text-3xl font-bold tracking-tighter sm:text-5xl">
                                     Join the Dev Conversation
                                 </h2>
-                                <p className="max-w-[900px]  text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                                <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                                     Sign up now to be part of the Brogram
                                     community. Share your code snippets, discuss
                                     the latest tech trends, and engage in
@@ -117,12 +118,14 @@ export function Home() {
                                     in the world of development.
                                 </p>
                             </div>
-                            <Button
-                                className="inline-flex items-center justify-center"
-                                size="lg"
-                            >
-                                Create an Account
-                            </Button>
+                            <Link to={"/signup"}>
+                                <Button
+                                    className="inline-flex items-center justify-center"
+                                    size="lg"
+                                >
+                                    Create an Account
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </section>
