@@ -57,21 +57,21 @@ const Signup = () => {
     // }
     // else
     return (
-        <div className="flex h-screen items-center justify-center bg-black p-4 text-black">
+        <div className="flex h-screen items-center justify-center bg-background/95 dark:bg-background/60 p-4 text-xl">
             <div className="flex h-full w-full items-center justify-center md:w-1/2">
                 <div className="flex h-full w-full items-center justify-center sm:w-0 md:w-full">
                     <IconCloud iconSlugs={slugs} />
                 </div>
             </div>
             <form
-                className="flex w-full max-w-sm flex-col space-y-4 rounded-lg bg-white p-6 shadow-lg md:max-w-lg md:p-8"
+                className="flex w-full max-w-sm flex-col space-y-4 rounded-lg bg-background/95 p-6 shadow-lg md:max-w-lg md:p-8"
                 onSubmit={submit}
             >
                 <h1 className="text-center font-mono text-lg font-medium md:text-xl">
                     Create Account!
                 </h1>
                 <div className="flex items-center justify-center space-x-2 text-center text-sm md:text-base">
-                    <button className="flex w-full items-center justify-center gap-2 rounded-full bg-gray-100 py-2 hover:bg-gray-200">
+                    <button className="flex w-full items-center justify-center gap-2 rounded-full bg-gray-100 dark:bg-gray-800 py-2 hover:bg-gray-200 text-sm">
                         <FaGoogle />
                         Sign in with Google
                     </button>
@@ -79,7 +79,7 @@ const Signup = () => {
                 <input
                     type="text"
                     placeholder="Name"
-                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400"
+                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400 dark:bg-gray-800 dark:border-gray-700 text-sm"
                     name="name"
                     value={userdata.name}
                     onChange={handle}
@@ -87,7 +87,7 @@ const Signup = () => {
                 <input
                     type="text"
                     placeholder="Username"
-                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400"
+                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400 dark:bg-gray-800 dark:border-gray-700 text-sm"
                     name="username"
                     value={userdata.username}
                     onChange={handle}
@@ -95,7 +95,7 @@ const Signup = () => {
                 <input
                     type="text"
                     placeholder="Email"
-                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400"
+                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400 dark:bg-gray-800 dark:border-gray-700 text-sm"
                     name="email"
                     value={userdata.email}
                     onChange={handle}
@@ -103,7 +103,7 @@ const Signup = () => {
                 <input
                     type="password"
                     placeholder="Password"
-                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400"
+                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400 dark:bg-gray-800 dark:border-gray-700 text-sm"
                     name="password"
                     autoComplete="off"
                     value={userdata.password}
@@ -113,7 +113,7 @@ const Signup = () => {
                     type="password"
                     autoComplete="off"
                     placeholder="Confirm Password"
-                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400"
+                    className="w-full rounded-full border border-gray-300 p-2 hover:border-green-400 dark:bg-gray-800 dark:border-gray-700 text-sm"
                     name="confirmPassword"
                     value={userdata.confirmPassword}
                     onChange={handle}
