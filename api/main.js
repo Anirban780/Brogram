@@ -7,6 +7,7 @@ import { dbString, apiPort } from "./config.js";
 import authRouter from "./routes/auth.js";
 import postRouter from "./routes/posts.js";
 import userRouter from "./routes/users.js";
+import feedRouter from "./routes/feed.js";
 
 // express setup
 const app = express();
@@ -28,6 +29,7 @@ app.use(function (req, res, next) {
 // protected routes
 app.use(postRouter);
 app.use(userRouter);
+app.use(feedRouter);
 
 // database connection
 mongoose.connect(dbString).then(() => {
