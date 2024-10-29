@@ -6,7 +6,7 @@ import Navigation from "./components/ui/navigation";
 import Footer from "./components/ui/footer";
 import Signup from "./components/Signup";
 import { ToastContainer } from "react-toast";
-import Signin from "./components/Signin";
+import Signin from "./components/Login";
 import ToS from "./pages/Landing/Terms-of-serivce";
 import PrivacyPolicy from "./pages/Landing/Privacy-policy";
 import ContentPolicy from "./pages/Landing/Content-policy";

@@ -9,7 +9,7 @@ export const genToken = (user) => {
             email: user.email,
         },
         jwtSecret,
-        { expiresIn: "3h" },
+        { expiresIn: "72h" },
     );
 
     return token;
